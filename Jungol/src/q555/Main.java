@@ -11,12 +11,10 @@ public class Main {
         // 문자 10개 입력받기
         for (int i = 0; i < charArray.length; i++) {
             charArray[i] = scanner.next().charAt(0);
+            
         }
-
-        // 입력받은 문자 출력
-        for (char c : charArray) {
-            System.out.print(c);
-        }
+        
+        System.out.print(charArray);
 
         scanner.close();
     }
