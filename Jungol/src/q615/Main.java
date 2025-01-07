@@ -4,25 +4,31 @@ import java.util.Scanner;
 
 class Student {
     private String name;
-    private int kScore;
-    private int eScore;
+    private int Kscore;
+    private int Escore;
+    private int Mscore;
 
-    public Student(String name, int kScore, int eScore) {
+    public Student(String name, int Kscore, int Escore, int Mscore) {
         this.name = name;
-        this.kScore = kScore;
-        this.eScore = eScore;
+        this.Kscore = Kscore;
+        this.Escore = Escore;
+        this.Mscore = Mscore;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getKScore() {
-        return kScore;
+    public int getKscore() {
+        return Kscore;
     }
 
-    public int getEScore() {
-        return eScore;
+    public int getEscore() {
+        return Escore;
+    }
+
+    public int getMscore() {
+        return Mscore;
     }
 }
 
@@ -30,23 +36,34 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String student1_name = sc.next();
-        int student1_Kscore = sc.nextInt();
-        int student1_Escore = sc.nextInt();
-        
-        String student2_name = sc.next();
-        int student2_Kscore = sc.nextInt();
-        int student2_Escore = sc.nextInt();
+        Student[] students = new Student[4];
+        for (int i = 0; i < 4; i++) {
+            String name = sc.next();
+            int Kscore = sc.nextInt();
+            int Escore = sc.nextInt();
+            int Mscore = sc.nextInt();
+            students[i] = new Student(name, Kscore, Escore, Mscore);
+        }
 
-        Student student1 = new Student(student1_name, student1_Kscore, student1_Escore);
-        Student student2 = new Student(student2_name, student2_Kscore, student2_Escore);
+        sc.close();
 
-        int avgKScore = (student1.getKScore() + student2.getKScore()) / 2;
-        int avgEScore = (student1.getEScore() + student2.getEScore()) / 2;
+        int totalKscore = 0, totalEscore = 0, totalMscore = 0;
+        for (Student student : students) {
+            totalKscore += student.getKscore();
+            totalEscore += student.getEscore();
+            totalMscore += student.getMscore();
+        }
 
-        System.out.println(student1.getName() + " " + student1.getKScore() + " " + student1.getEScore());
-        System.out.println(student2.getName() + " " + student2.getKScore() + " " + student2.getEScore());
-        System.out.println("avg " + avgKScore + " " + avgEScore);
+        int avgKscore = totalKscore / students.length;
+        int avgEscore = totalEscore / students.length;
+        int avgMscore = totalMscore / students.length;
+
+        for (Student student : students) {
+            System.out.println(student.getName() + " " + student.getKscore() + " " + student.getEscore() + " " + student.getMscore());
+        }
+
+        System.out.println("avg " + avgKscore + " " + avgEscore + " " + avgMscore);
     }
 }
+
 
