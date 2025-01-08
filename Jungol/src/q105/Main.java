@@ -14,6 +14,8 @@ public class Main {
 				System.out.printf("%15s", arr[i]);
 			}
 			
+			//안녕하세요
+			
 			
 		}
 	}
